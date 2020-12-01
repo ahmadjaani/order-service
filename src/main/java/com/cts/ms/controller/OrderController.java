@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cts.ms.entity.Order;
+import com.cts.ms.common.TransactionRequest;
+import com.cts.ms.common.TransactionResponse;
 import com.cts.ms.service.OrderService;
 
 @RestController
@@ -15,9 +16,9 @@ public class OrderController {
 	private OrderService orderService;
 
 	@PostMapping("/bookOrder")
-	public Order bookOrder(@RequestBody Order order) {
+	public TransactionResponse bookOrder(@RequestBody TransactionRequest request) {
 
-		return orderService.saveOrder(order);
+		return orderService.saveOrder(request);
 	}
 
 }
